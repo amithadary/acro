@@ -12,7 +12,7 @@ Please make sure you have latest Docker engine and docker-compose, that ports 30
 Since the data entities are well defined, logically connected, and require data integrity due to their sensitivity (transactions), I decided to go for a relational database.\
 Scalability-wise, even if the system will handle 10k transactions per day, it sums up to 18,250,000 transactions per 5 years which is something MySQL can handle well.\
 I proposed a very simple schema that contains only Transactions and Customers. In a more complex app I would normalize the data by creating tables for countries, cc types, currencies, etc., and would let the user choose from an enclosed list. That way I would ensure the data validity, and utilize the benefits of quering a relational database.\
-**Due to foreign key constraint, create/update transactions are only allowed if `id_customer` already exists in `customer` table**
+**Due to foreign key constraint, create/update transactions are only allowed if customer already exists in `customers` table**
 
 # TODO
 - Data validation in Client & Server
