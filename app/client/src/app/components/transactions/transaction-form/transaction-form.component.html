@@ -1,0 +1,26 @@
+<form class="row" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+
+  <div class="id">
+    {{initialTransaction.id}}
+  </div>
+  <div class="id_customer">
+    <input type="text" formControlName="id_customer" autocomplete="false" spellcheck="false" />
+  </div>
+  <div class="time">
+    {{initialTransaction.created_at | date:'dd/mm/yy, h:mm a'}}
+  </div>
+  <div class="price">
+    <input class="price-number" type="number" formControlName="total_price" min="0" step=".01" autocomplete="false" spellcheck="false"  />
+    <input class="currency" type="text" formControlName="currency" autocomplete="false" spellcheck="false" />
+  </div>
+  <div class="cc_type">
+    <input type="text" formControlName="cc_type" autocomplete="false" spellcheck="false"  />
+  </div>
+  <div class="cc_number">
+    <input type="text" formControlName="cc_number" autocomplete="false" spellcheck="false"  />
+  </div>
+  <div class="buttons">
+    <button><img class="icon" src="./assets/icons/save.png" /></button>
+    <img *ngIf="editFlag" class="icon" (click)="onCancel()" src="./assets/icons/cancel.png" />
+  </div>
+</form>

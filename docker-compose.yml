@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  mysql:
+    build: ./mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: acro
+      MYSQL_DATABASE: acro
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/volume:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+
+  app:
+    build: ./app
+    ports:
+      - "3000:3000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      MYSQL_SERVICE: mysql

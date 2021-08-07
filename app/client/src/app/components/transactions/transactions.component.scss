@@ -1,0 +1,54 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  line-height: 30px;
+  border-bottom: 1px solid #ccc;
+  &.headers {
+    text-decoration: underline;
+  }
+  > div {
+    padding-right: 10px;
+  }
+  div.id {
+    width: 40px;
+  }
+  div.id_customer {
+    width: 100px;
+  }
+  div.time {
+    width: 160px;
+  }
+  div.price {
+    width: 120px;
+    .price-number {
+      display: inline-flex;
+      justify-content: flex-end;
+      width: 65px;
+      padding-right: 5px;
+    }
+    .currency {
+      display: inline-flex;
+      justify-content: flex-start;
+      width: 35px;
+    }
+  }
+  div.cc_type {
+    width: 200px;
+  }
+  div.cc_number {
+    width: 90px;
+  }
+  div.buttons {
+    display: flex;
+    align-items: center;
+    img.icon {
+      width: 18px;
+      height: 18px;
+      margin-right: 5px;
+      &:hover {
+        cursor: pointer;
+        opacity: .5;
+      }
+    }
+  }
+}

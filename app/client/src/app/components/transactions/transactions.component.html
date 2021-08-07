@@ -1,0 +1,50 @@
+<div class="row headers">
+  <div class="id">
+    ID
+  </div>
+  <div class="id_customer">
+    Customer ID
+  </div>
+  <div class="time">
+    Time
+  </div>
+  <div class="price">
+    Price
+  </div>
+  <div class="cc_type">
+    CC Type
+  </div>
+  <div class="cc_number">
+    CC 4 Digits
+  </div>
+</div>
+
+<transaction-form
+  (submitEvent)="onCreate($event)">
+</transaction-form>
+
+<ng-container *ngFor="let transaction of transactions$ | async; trackBy: trackById; let odd = odd;">
+  <div [style.background]="odd ? '#fff' : '#eee'">
+    <transaction-view
+      *ngIf="!transaction.editState"
+      [transaction]="transaction"
+      (deleteEvent)="onDelete(transaction.id)"
+      (editEvent)="onEditClick(transaction)">
+    </transaction-view>
+
+    <transaction-form
+      *ngIf="transaction.editState"
+      [initialTransaction]="transaction"
+      (submitEvent)="onUpdate(transaction, $event)"
+      (cancelEvent)="onCancelClick(transaction)">
+    </transaction-form>
+  </div>
+</ng-container>
+
+<mat-paginator
+  [length]="transactionsCount$ | async"
+  [pageSize]="paginationOptions.pageSize"
+  [pageSizeOptions]="paginationOptions.pageSizeOptions"
+  [showFirstLastButtons]="true"
+  (page)="onPaginationEvent($event)">
+</mat-paginator>

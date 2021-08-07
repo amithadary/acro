@@ -1,0 +1,6 @@
+/app/client/node_modules
+/app/client/e2e
+/app/client/dist
+/app/client/karma.conf.js
+/app/client/.editorconfig
+/app/server/node_modules

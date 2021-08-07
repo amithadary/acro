@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="id">
+    {{transaction.id}}
+  </div>
+  <div class="id_customer">
+    {{transaction.id_customer}}
+  </div>
+  <div class="time">
+    {{transaction.created_at | date:'dd/mm/yy, h:mm a'}}
+  </div>
+  <div class="price">
+    <span class="price-number">{{transaction.total_price}}</span>
+    <span class="currency">{{transaction.currency}}</span>
+  </div>
+  <div class="cc_type">
+    {{transaction.cc_type}}
+  </div>
+  <div class="cc_number">
+    {{transaction.cc_number}}
+  </div>
+  <div class="buttons">
+    <img (click)="onEdit()" class="icon" src="./assets/icons/pencil.png" />
+    <img (click)="onDelete()" class="icon" src="./assets/icons/trash.png" />
+  </div>
+</div>
